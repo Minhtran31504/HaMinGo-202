@@ -1,0 +1,238 @@
+/* DocsBotAI Chat Widget Custom Positioning */
+/* Tùy chỉnh vị trí chat widget để nằm ngay bên dưới nút scroll to top */
+
+/* Main container positioning */
+#docsbotai-root {
+  position: fixed !important;
+  bottom: 100px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+  max-width: 350px !important;
+  width: 100% !important;
+}
+
+/* Target the floating button inside shadow DOM */
+#docsbotai-root::part(button),
+#docsbotai-root .floating-button,
+#docsbotai-root a[role="button"][class*="floating"] {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  left: auto !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-radius: 50px !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  z-index: 9999 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Chat window positioning */
+#docsbotai-root .chat-window,
+#docsbotai-root [class*="chat-window"],
+#docsbotai-root [class*="chat-container"] {
+  position: fixed !important;
+  bottom: 80px !important;
+  right: 20px !important;
+  max-width: 350px !important;
+  width: 100% !important;
+  border-radius: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  border: none !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* Responsive adjustments for tablets */
+@media (max-width: 768px) {
+  #docsbotai-root {
+    bottom: 90px !important;
+    right: 15px !important;
+    left: 15px !important;
+    max-width: none !important;
+    width: calc(100% - 30px) !important;
+  }
+  
+  #docsbotai-root::part(button),
+  #docsbotai-root .floating-button,
+  #docsbotai-root a[role="button"][class*="floating"] {
+    bottom: 20px !important;
+    right: 15px !important;
+    left: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  #docsbotai-root .chat-window,
+  #docsbotai-root [class*="chat-window"],
+  #docsbotai-root [class*="chat-container"] {
+    bottom: 70px !important;
+    right: 15px !important;
+    left: 15px !important;
+    max-width: none !important;
+    width: calc(100% - 30px) !important;
+  }
+}
+
+/* Responsive adjustments for mobile phones */
+@media (max-width: 480px) {
+  #docsbotai-root {
+    bottom: 80px !important;
+    right: 10px !important;
+    left: 10px !important;
+    width: calc(100% - 20px) !important;
+  }
+  
+  #docsbotai-root::part(button),
+  #docsbotai-root .floating-button,
+  #docsbotai-root a[role="button"][class*="floating"] {
+    bottom: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  #docsbotai-root .chat-window,
+  #docsbotai-root [class*="chat-window"],
+  #docsbotai-root [class*="chat-container"] {
+    bottom: 60px !important;
+    right: 10px !important;
+    left: 10px !important;
+    width: calc(100% - 20px) !important;
+  }
+}
+
+/* Ensure scroll to top button stays above chat widget */
+.scrollToTop {
+  z-index: 10000 !important;
+  right: 20px !important;
+}
+
+/* Mobile alignment for scroll to top button */
+@media (max-width: 480px) {
+  .scrollToTop {
+    right: 20px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .scrollToTop {
+    right: 20px !important;
+  }
+}
+
+/* Hover effects for floating button */
+#docsbotai-root::part(button):hover,
+#docsbotai-root .floating-button:hover,
+#docsbotai-root a[role="button"][class*="floating"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6) !important;
+}
+
+/* Chat header styling */
+#docsbotai-root [class*="chat-header"],
+#docsbotai-root [class*="header"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-radius: 15px 15px 0 0 !important;
+  color: white !important;
+}
+
+/* Chat messages styling */
+#docsbotai-root [class*="message"],
+#docsbotai-root [class*="chat-message"] {
+  border-radius: 10px !important;
+  margin: 8px 0 !important;
+}
+
+/* Chat input styling */
+#docsbotai-root [class*="chat-input"],
+#docsbotai-root [class*="input"] {
+  border-radius: 0 0 15px 15px !important;
+  border: none !important;
+}
+
+/* Animation for smooth appearance */
+#docsbotai-root {
+  animation: slideInUp 0.3s ease-out !important;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Hide chat widget on very small screens if needed */
+@media (max-width: 320px) {
+  #docsbotai-root {
+    bottom: 70px !important;
+    right: 5px !important;
+    left: 5px !important;
+    width: calc(100% - 10px) !important;
+  }
+  
+  #docsbotai-root::part(button),
+  #docsbotai-root .floating-button,
+  #docsbotai-root a[role="button"][class*="floating"] {
+    bottom: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  #docsbotai-root .chat-window,
+  #docsbotai-root [class*="chat-window"],
+  #docsbotai-root [class*="chat-container"] {
+    bottom: 50px !important;
+    right: 5px !important;
+    left: 5px !important;
+    width: calc(100% - 10px) !important;
+  }
+}
+
+/* Additional targeting for shadow DOM elements */
+#docsbotai-root * {
+  box-sizing: border-box !important;
+}
+
+/* Force positioning with higher specificity */
+body #docsbotai-root::part(button),
+body #docsbotai-root .floating-button,
+body #docsbotai-root a[role="button"][class*="floating"] {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  left: auto !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Prevent chat button from being hidden */
+#docsbotai-root {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure chat button is always visible */
+#docsbotai-root a.floating-button,
+#docsbotai-root [class*="floating-button"],
+#docsbotai-root [role="button"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}

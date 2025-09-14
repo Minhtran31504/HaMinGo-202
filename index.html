@@ -23,6 +23,60 @@
   <link rel="stylesheet" href="html-templates.evonicmedia.com/finteezy/assets/css/slick.min.css">
   <!-- animation of css -->
   <link rel="stylesheet" href="html-templates.evonicmedia.com/finteezy/assets/css/aos.css">
+  <!-- DocsBotAI custom positioning CSS -->
+  <link rel="stylesheet" href="html-templates.evonicmedia.com/finteezy/assets/css/docsbot-custom.css">
+  
+  <!-- Additional inline CSS for stronger targeting -->
+  <style>
+    /* Force positioning with maximum specificity */
+    html body #docsbotai-root::part(button),
+    html body #docsbotai-root .floating-button,
+    html body #docsbotai-root a[role="button"][class*="floating"],
+    html body #docsbotai-root a.floating-button {
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      left: auto !important;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      border-radius: 50px !important;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+      transition: all 0.3s ease !important;
+      border: none !important;
+      z-index: 9999 !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      html body #docsbotai-root::part(button),
+      html body #docsbotai-root .floating-button,
+      html body #docsbotai-root a[role="button"][class*="floating"],
+      html body #docsbotai-root a.floating-button {
+        bottom: 20px !important;
+        right: 15px !important;
+        left: auto !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      html body #docsbotai-root::part(button),
+      html body #docsbotai-root .floating-button,
+      html body #docsbotai-root a[role="button"][class*="floating"],
+      html body #docsbotai-root a.floating-button {
+        bottom: 20px !important;
+        right: 20px !important;
+        left: auto !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -881,6 +935,49 @@
     type="text/javascript">window.DocsBotAI = window.DocsBotAI || {}, DocsBotAI.init = function (e) { return new Promise((t, r) => { var n = document.createElement("script"); n.type = "text/javascript", n.async = !0, n.src = "https://widget.docsbot.ai/chat.js"; let o = document.getElementsByTagName("script")[0]; o.parentNode.insertBefore(n, o), n.addEventListener("load", () => { let n; Promise.all([new Promise((t, r) => { window.DocsBotAI.mount(Object.assign({}, e)).then(t).catch(r) }), (n = function e(t) { return new Promise(e => { if (document.querySelector(t)) return e(document.querySelector(t)); let r = new MutationObserver(n => { if (document.querySelector(t)) return e(document.querySelector(t)), r.disconnect() }); r.observe(document.body, { childList: !0, subtree: !0 }) }) })("#docsbotai-root"),]).then(() => t()).catch(r) }), n.addEventListener("error", e => { r(e.message) }) }) };</script>
   <script type="text/javascript">
     DocsBotAI.init({ id: "s0AGNpluFCoLJHyU8cvF/wVc45FhJURhGru8OVsLl" });
+    
+    // Force apply custom positioning after DocsBotAI loads
+    setTimeout(function() {
+      const chatButton = document.querySelector('#docsbotai-root a.floating-button');
+      if (chatButton) {
+        chatButton.style.setProperty('position', 'fixed', 'important');
+        chatButton.style.setProperty('bottom', '20px', 'important');
+        chatButton.style.setProperty('right', '20px', 'important');
+        chatButton.style.setProperty('left', 'auto', 'important');
+        chatButton.style.setProperty('background', 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 'important');
+        chatButton.style.setProperty('border-radius', '50px', 'important');
+        chatButton.style.setProperty('box-shadow', '0 4px 15px rgba(102, 126, 234, 0.4)', 'important');
+        chatButton.style.setProperty('z-index', '9999', 'important');
+      }
+      
+      // Also target any chat windows
+      const chatWindow = document.querySelector('#docsbotai-root .chat-window, #docsbotai-root [class*="chat-window"]');
+      if (chatWindow) {
+        chatWindow.style.setProperty('position', 'fixed', 'important');
+        chatWindow.style.setProperty('bottom', '80px', 'important');
+        chatWindow.style.setProperty('right', '20px', 'important');
+        chatWindow.style.setProperty('max-width', '350px', 'important');
+      }
+    }, 2000);
+    
+    // Reapply on window resize
+    window.addEventListener('resize', function() {
+      setTimeout(function() {
+        const chatButton = document.querySelector('#docsbotai-root a.floating-button');
+        if (chatButton) {
+          if (window.innerWidth <= 480) {
+            chatButton.style.setProperty('bottom', '20px', 'important');
+            chatButton.style.setProperty('right', '20px', 'important');
+          } else if (window.innerWidth <= 768) {
+            chatButton.style.setProperty('bottom', '20px', 'important');
+            chatButton.style.setProperty('right', '15px', 'important');
+          } else {
+            chatButton.style.setProperty('bottom', '20px', 'important');
+            chatButton.style.setProperty('right', '20px', 'important');
+          }
+        }
+      }, 100);
+    });
   </script>
 </body>
 
